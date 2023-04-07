@@ -27,3 +27,11 @@ Developing a real-time operating system (RTOS) from scratch.
   Had to add `STM32F407xx` to the symbol list to fix the following error:
 
   > Please select first the target STM32F4xx device used in your application (in stm32f4xx.h file)
+  
+* CMSIS and Reference Manual naming convention 
+
+  e.g., RCC_AHB1ENR $\to$ "RCC" is the name of the structure, "AHB1ENR" is the name of the member within the structure.
+  
+* To use any peripheral, enable its clock first.
+
+* Checked "Alternate function mapping" table of the MCU data sheet to find the USART pins.
