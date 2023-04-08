@@ -59,3 +59,11 @@ Developing a real-time operating system (RTOS) from scratch.
   > `ctrl` + `a`, `x`, `Enter` to quit the minicom session.
   
 * `delay` function uses the value from SysTick to spinlock the CPU. Not efficient because it is consuming CPU cycles for doing nothing. Better way is to use **blocking**.
+
+* Context switch, exception entry: See "Exception Model" section of "Cortex-M4 Devices Generic User Guide."
+
+* When analyzing a stack frame by locating it using the stack pointer, ignore the first two lower address words from the stack pointer. Why?
+
+* Stack frame refers to the 8 data words (r0-r3, r12, LR, PC, xPSR) that get pushed onto stack upon stacking.
+
+  (By inserting an address of another function which has an infinite loop in it, you can jump to one infinite loop to another. This is how the RTOS runs multiple tasks with infinite loops concurrently!)
