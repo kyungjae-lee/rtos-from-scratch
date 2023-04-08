@@ -1,0 +1,5 @@
+usart.c:22:5:__io_putchar	1
+usart.c:28:6:usart_tx_init	1
+usart.c:57:13:usart_write	2
+usart.c:67:13:usart_set_baudrate	1
+usart.c:73:17:compute_usart_bd	1

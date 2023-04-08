@@ -49,3 +49,11 @@ Developing a real-time operating system (RTOS) from scratch.
   > e.g., `screen /dev/ttyUSB0 115200`
   >
   > `ctrl` + `a`, `k`, `y` to quit the screen session.
+
+  Minicom
+
+  ```plain
+  minicom
+  ```
+
+  > `ctrl` + `a`, `x`, `Enter` to quit the minicom session.
