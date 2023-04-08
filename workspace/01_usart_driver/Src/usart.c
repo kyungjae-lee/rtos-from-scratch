@@ -1,0 +1,76 @@
+#include <stdint.h>
+#include <usart.h>
+
+#define GPIOAEN 		(1U << 0)	// 0b 0000 0000 0000 0000 0000 0000 0000 0001
+#define USART2EN		(1U << 17)
+
+#define SYS_FREQ		16000000	// MCU data sheet "Clocks and Startup"
+#define APB1_CLK		SYS_FREQ
+#define USART_BAUDRATE	115200		// Desired USART baudrate (standard value)
+
+#define CR1_TE			(1U << 3)	// USART Control Register transmitter enable
+#define CR1_UE			(1U << 13)	// USART Control Register USART enable
+
+#define SR_TXE			(1U << 7)	// USART Status Register Transmit data reg empty
+
+static uint16_t compute_usart_bd(uint32_t periph_clk, uint32_t baudrate);
+static void usart_set_baudrate(uint32_t periph_clk, uint32_t baudrate);
+static void usart_write(int ch);
+
+
+/* Allows to use 'printf()'. */
+int __io_putchar(int ch)
+{
+	usart_write(ch);
+	return ch;
+}
+
+void usart_tx_init(void)
+{
+	/* Enable clock access to GPIOA. */
+	RCC->AHB1ENR |= GPIOAEN;
+
+	/* Set PA2 mode to alternate function mode. */
+	GPIOA->MODER &= ~(1U << 4);
+	GPIOA->MODER |= (1U << 5);
+
+	/* Set alternate function type to AF7 (USART2_TX) */
+	GPIOA->AFR[0] |= (1U << 8);	// AFR[0]: Low, AFR[1]: High
+	GPIOA->AFR[0] |= (1U << 9);
+	GPIOA->AFR[0] |= (1U << 10);
+	GPIOA->AFR[0] &= ~(1U << 11);
+
+
+	/* Enable clock access to USART2. */
+	RCC->APB1ENR |= USART2EN;
+
+	/* Configure baudrate (the rate at which communication will take place). */
+	usart_set_baudrate(APB1_CLK, USART_BAUDRATE);
+
+	/* Configure transfer direction. */
+	USART2->CR1 |= CR1_TE;	// Enable transmitter
+
+	/* Enable USART module. */
+	USART2->CR1 |= CR1_UE;	// Enable USART
+}
+
+static void usart_write(int ch)
+{
+	/* Make sure the transmit data register is empty. */
+	while (!(USART2->SR & SR_TXE)) {}
+
+	/* Write to transmit data register */
+	USART2->DR = (ch & 0xFF);
+}
+
+/* Sets the USART baudrate */
+static void usart_set_baudrate(uint32_t periph_clk, uint32_t baudrate)
+{
+	USART2->BRR = compute_usart_bd(periph_clk, baudrate);
+}
+
+/* Computes the USART baudrate */
+static uint16_t compute_usart_bd(uint32_t periph_clk, uint32_t baudrate)
+{
+	return (periph_clk + (baudrate / 2U)) / baudrate;
+}
