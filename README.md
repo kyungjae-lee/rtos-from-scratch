@@ -57,3 +57,5 @@ Developing a real-time operating system (RTOS) from scratch.
   ```
 
   > `ctrl` + `a`, `x`, `Enter` to quit the minicom session.
+  
+* `delay` function uses the value from SysTick to spinlock the CPU. Not efficient because it is consuming CPU cycles for doing nothing. Better way is to use **blocking**.
