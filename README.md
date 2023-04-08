@@ -35,3 +35,17 @@ Developing a real-time operating system (RTOS) from scratch.
 * To use any peripheral, enable its clock first.
 
 * Checked "Alternate function mapping" table of the MCU data sheet to find the USART pins.
+
+* To monitor USART message, STM32 Discovery board must be connected to the host machine via USB-to-Serial cable.
+
+* Use **Screen** or **Minicom** utility to monitor USART message.
+
+  Screen:
+
+  ```plain
+  screen [device] [baudrate]
+  ```
+
+  > e.g., `screen /dev/ttyUSB0 115200`
+  >
+  > `ctrl` + `a`, `k`, `y` to quit the screen session.
