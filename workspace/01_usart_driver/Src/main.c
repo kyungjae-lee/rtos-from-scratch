@@ -9,6 +9,6 @@ int main(void)
 
 	while (1)
 	{
-		printf("Hello from STM32F4.....\n\r");
+		printf("Hello from STM32F4.....\n");
 	}
 }
