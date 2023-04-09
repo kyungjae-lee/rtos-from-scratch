@@ -165,5 +165,42 @@ Developing a real-time operating system (RTOS) from scratch.
     * Variable to hold thread priority
     * etc.
 
+* Types of scheduling algorithm
 
+  * Static vs. dynamic
+    * Static - Task priorities are determined before the system runs
+    * Dynamic - Determines task priorities as the system runs
+  * Preemptive vs. Non-preemptive
+    * Preemptive - Tasks can be preempted by periodic interrupts or a higher-priority task
+      * Preemption is needed to guarantee fairness
+      * Preemption needs an interrupt
+      * Preemption helps meet deadlines
+    * Non-preemptive - A task runs to its completion without getting preempted
+
+  A scheduling algorithm can be any combination of these two categories:
+
+  * Dynamic preemptive
+  * Dynamic non-preemptive
+  * Static preemptive
+  * Static non-preemptive
+
+* An ideal RTOS:
+
+  * Maximizes Throughput
+  * Minimizes Turnaround Time
+  * Minimizes Response Time
+  * Maximizes CPU utilization
+  * Minimizes Scheduling Overhead
+
+* Scheduler design considerations
+
+  * Application requirements
+    * Number of tasks
+    * Resource requirements for each task
+    * Release time for each task
+    * Deadlines for each task
+  * Platform specific requirements
+    * Maximum context switching time
+    * Maximum interrupt service latency
+    * maximum communication delay
 
