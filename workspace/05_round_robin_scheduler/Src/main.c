@@ -1,56 +1,57 @@
 #include <stdio.h>
 #include "led.h"
 #include "usart.h"
-#include "timebase.h"
+#include "kernel.h"
+
+#define QUANTA 10	/* Round-Robin time quanta 10 ms. */
+
+/* Task profilers to check if each task is running as intended. */
+typedef uint32_t taskProfiler;
+taskProfiler task0_profiler, task1_profiler, task2_profiler;
 
 void motor_run(void);
 void motor_stop(void);
 void valve_open(void);
 void valve_close(void);
 
-int motor_main(void)
+void task0(void)
 {
 	while (1)
 	{
-		motor_run();
-		delay(1);
-		motor_stop();
-		delay(1);
+		task0_profiler++;
+		//motor_run();
+		printf("task0\n\r");
 	}
 }
 
-int valve_main(void)
+void task1(void)
 {
 	while (1)
 	{
-		valve_open();
-		delay(1);
-		valve_close();
-		delay(1);
+		task1_profiler++;
+		//valve_open();
+	}
+}
+
+void task2(void)
+{
+	while (1)
+	{
+		task2_profiler++;
 	}
 }
 
 
 int main(void)
 {
-	uint32_t volatile start = 0U;
-	led_init();
-	usart_tx_init();
-	timebase_init();
+	/* Initialize kernel. */
+	kernelInit();
 
-	if (start)
-	{
-		motor_main();
-	}
-	else
-	{
-		valve_main();
-	}
+	/* Create tasks. */
+	kernelCreateThreads(&task0, &task1, &task2);	/* &task0, &task1, &task2 ? */
 
-	while (1)
-	{
-		// Empty
-	}
+	/* Set the Round-Robin time quanta. */
+	startKernel(QUANTA);
 }
 
 void motor_run(void)

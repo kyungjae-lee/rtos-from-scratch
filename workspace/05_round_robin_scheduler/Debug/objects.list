@@ -3,6 +3,5 @@
 "./Src/main.o"
 "./Src/syscalls.o"
 "./Src/sysmem.o"
-"./Src/timebase.o"
 "./Src/usart.o"
 "./Startup/startup_stm32f407vgtx.o"
