@@ -19,8 +19,7 @@ void task0(void)
 	while (1)
 	{
 		task0_profiler++;
-		//motor_run();
-		printf("task0\n\r");
+		motor_run();
 	}
 }
 
@@ -29,7 +28,7 @@ void task1(void)
 	while (1)
 	{
 		task1_profiler++;
-		//valve_open();
+		valve_open();
 	}
 }
 
@@ -44,11 +43,14 @@ void task2(void)
 
 int main(void)
 {
+	/* Initialize USART */
+	usart_tx_init();
+
 	/* Initialize kernel. */
 	kernelInit();
 
 	/* Create tasks. */
-	kernelCreateThreads(&task0, &task1, &task2);	/* &task0, &task1, &task2 ? */
+	kernelCreateThreads(task0, task1, task2);	/* &task0, &task1, &task2 ? */
 
 	/* Set the Round-Robin time quanta. */
 	startKernel(QUANTA);

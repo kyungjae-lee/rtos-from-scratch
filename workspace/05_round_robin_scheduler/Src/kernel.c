@@ -189,6 +189,8 @@ void startKernel(uint32_t quanta)
  */
 void startScheduler(void)
 {
+	/* Disable global interrupts. */
+	// __asm("cpsid i");	// Do we need synchronization here?
 
 	/* Load r0 with the address of pCurr. */
 	__asm("ldr r0, =pCurr");
