@@ -1,7 +1,7 @@
 #include "kernel.h"
 
 #define NUM_OF_THREADS	3
-#define STACK_SIZE		100
+#define STACK_SIZE		400
 
 #define BUS_FREQ		16000000
 
