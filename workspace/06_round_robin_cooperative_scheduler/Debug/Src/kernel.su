@@ -1,0 +1,8 @@
+/home/klee/repos/rtos-from-scratch/workspace/06_round_robin_cooperative_scheduler/chip-headers/CMSIS/Include/core_cm4.h:1816:22:__NVIC_SetPriority	16	static
+../Src/kernel.c:35:6:kernelStackInit	16	static
+../Src/kernel.c:68:9:kernelCreateThreads	24	static,ignoring_inline_asm
+../Src/kernel.c:102:6:kernelInit	4	static
+../Src/kernel.c:107:6:startKernel	16	static
+../Src/kernel.c:137:30:SysTick_Handler	0	static,ignoring_inline_asm
+../Src/kernel.c:194:6:startScheduler	4	static,ignoring_inline_asm
+../Src/kernel.c:234:6:taskYield	4	static
