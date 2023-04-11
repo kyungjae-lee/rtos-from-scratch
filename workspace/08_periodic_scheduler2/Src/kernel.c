@@ -273,7 +273,29 @@ void tim2_1hz_interrupt_init(void)
 	NVIC_EnableIRQ(TIM2_IRQn);
 }
 
+void semaphoreInit(int32_t *semaphore, int32_t value)
+{
+	*semaphore = value;
+}
 
+void semaphoreSet(int32_t * semaphore)
+{
+	__disable_irq();	/* Ensure atomic operation. */
+	(*semaphore)++;
+	__enable_irq();
+}
+
+void semaphoreWait(int32_t *semaphore)
+{
+	__disable_irq();
+	while (*semaphore <= 0)
+	{
+		__disable_irq();
+		__enable_irq();
+	}
+	(*semaphore)--;
+	__enable_irq();
+}
 
 
 

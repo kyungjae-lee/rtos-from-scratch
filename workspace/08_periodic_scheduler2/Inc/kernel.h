@@ -11,6 +11,9 @@ void startKernel(uint32_t quanta);
 uint8_t kernelCreateThreads(void (*task0)(void), void (*task1)(void), void (*task2)(void));
 void taskYield(void);
 void tim2_1hz_interrupt_init(void);
+void semaphoreInit(int32_t *semaphore, int32_t value);
+void semaphoreSet(int32_t * semaphore);
+void semaphoreWait(int32_t *semaphore);
 
 
 #endif

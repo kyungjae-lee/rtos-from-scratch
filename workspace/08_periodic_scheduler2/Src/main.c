@@ -3,11 +3,13 @@
 #include "usart.h"
 #include "kernel.h"
 
-#define QUANTA 10	/* Round-Robin time quanta 10 ms. */
+#define QUANTA 10	/* Round-Robin time quanta in ms. */
 
 /* Task profilers to check if each task is running as intended. */
 typedef uint32_t taskProfiler;
 taskProfiler task0_profiler, task1_profiler, task2_profiler, task_periodic_profiler;
+
+int32_t semaphore1, semaphore2;
 
 void motor_run(void);
 void motor_stop(void);
@@ -18,7 +20,7 @@ void task0(void)
 {
 	while (1)
 	{
-		task0_profiler++;
+		//task0_profiler++;
 		taskYield();	/* Once it increments its profiler, yield. */
 	}
 }
@@ -27,7 +29,10 @@ void task1(void)
 {
 	while (1)
 	{
-		task1_profiler++;
+		//task1_profiler++;
+		semaphoreWait(&semaphore1);
+		motor_run();
+		semaphoreSet(&semaphore2);
 	}
 }
 
@@ -35,7 +40,10 @@ void task2(void)
 {
 	while (1)
 	{
-		task2_profiler++;
+		//task2_profiler++;
+		semaphoreWait(&semaphore2);
+		valve_open();
+		semaphoreSet(&semaphore1);
 	}
 }
 
@@ -47,6 +55,10 @@ int main(void)
 
 	/* Initialize hardware timer. */
 	tim2_1hz_interrupt_init();
+
+	/* Initialize semaphores. */
+	semaphoreInit(&semaphore1, 1);
+	semaphoreInit(&semaphore2, 0);
 
 	/* Initialize kernel. */
 	kernelInit();
