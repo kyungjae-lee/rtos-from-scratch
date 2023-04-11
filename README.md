@@ -204,3 +204,5 @@ Developing a real-time operating system (RTOS) from scratch.
     * Maximum interrupt service latency
     * maximum communication delay
 
+* To extend a basic Round-Robin scheduling algorithm to cooperative algorithm, allow tasks to yield execution if they completed their job earlier in the assigned time qunta.
+* Naked function contains pure assembly code. The compiler does not generate prologue (disabling interrupts and pushing r4-r11 onto stask) and epilogue (enabling interrupts and popping r4-r11) for naked functions.
