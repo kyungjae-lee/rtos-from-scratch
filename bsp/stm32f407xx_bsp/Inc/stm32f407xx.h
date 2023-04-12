@@ -1,3 +1,10 @@
+/*****************************************************************************************
+ * @ File name		: stm32f407xx.h
+ * @ Description	: Header file for stm32f407xx board support package.
+ * @ Author			: Kyungjae Lee
+ * @ Date created	: 04/11/2023
+ ****************************************************************************************/
+
 #ifndef STM32F407xx_H
 #define STM32F407xx_H
 
