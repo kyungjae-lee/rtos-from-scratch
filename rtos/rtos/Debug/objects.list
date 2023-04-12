@@ -1,0 +1,8 @@
+"./Src/main.o"
+"./Src/syscalls.o"
+"./Src/sysmem.o"
+"./Startup/startup_stm32f407vgtx.o"
+"./stm32f407xx_bsp/Src/stm32f407xx_button.o"
+"./stm32f407xx_bsp/Src/stm32f407xx_delay.o"
+"./stm32f407xx_bsp/Src/stm32f407xx_led.o"
+"./stm32f407xx_bsp/Src/stm32f407xx_usart.o"

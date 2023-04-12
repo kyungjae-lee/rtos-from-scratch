@@ -1,0 +1,10 @@
+09:18:54 **** Clean-only build of configuration Debug for project rtos ****
+make -j8 clean 
+rm -rf ./stm32f407xx_bsp/Src/stm32f407xx_button.d ./stm32f407xx_bsp/Src/stm32f407xx_button.o ./stm32f407xx_bsp/Src/stm32f407xx_button.su ./stm32f407xx_bsp/Src/stm32f407xx_delay.d ./stm32f407xx_bsp/Src/stm32f407xx_delay.o ./stm32f407xx_bsp/Src/stm32f407xx_delay.su ./stm32f407xx_bsp/Src/stm32f407xx_led.d ./stm32f407xx_bsp/Src/stm32f407xx_led.o ./stm32f407xx_bsp/Src/stm32f407xx_led.su ./stm32f407xx_bsp/Src/stm32f407xx_usart.d ./stm32f407xx_bsp/Src/stm32f407xx_usart.o ./stm32f407xx_bsp/Src/stm32f407xx_usart.su
+rm -rf ./Startup/startup_stm32f407vgtx.d ./Startup/startup_stm32f407vgtx.o
+rm -rf ./Src/main.d ./Src/main.o ./Src/main.su ./Src/syscalls.d ./Src/syscalls.o ./Src/syscalls.su ./Src/sysmem.d ./Src/sysmem.o ./Src/sysmem.su
+rm -rf default.size.stdout rtos.elf rtos.list rtos.map
+ 
+
+09:18:55 Build Finished. 0 errors, 0 warnings. (took 879ms)
+
