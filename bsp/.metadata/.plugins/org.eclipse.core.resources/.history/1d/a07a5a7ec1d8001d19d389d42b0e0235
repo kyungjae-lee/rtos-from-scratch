@@ -1,0 +1,48 @@
+#include <stm32f407xx_bsp.h>
+/*****************************************************************************************
+ * User button driver
+ ****************************************************************************************/
+
+void bsp_button_init(void)
+{
+	__disable_irq();
+
+	/* Enable clock for GPIOA peripheral */
+	RCC_AHB1ENR |= GPIOAEN;
+
+	/* Set button pin mode to input mode */
+	/* Clear */
+	GPIOA_MODER &= ~(0x03U << 0);	/* Optional since this region will be 0 by default */
+
+	__enable_irq();
+}
+
+uint32_t bsp_button_read(void)
+{
+	return GPIOA_IDR & BUTTON;
+}
+
+
+/*****************************************************************************************
+ * Enable / disable IRQ interrupts
+ ****************************************************************************************/
+
+/*
+ * Enable IRQ interrupts
+ * Enables IRQ interrupts by clearing the I-bit in the CPSR.
+ * Can only be executed in Privileged modes.
+ */
+void __enable_irq(void)
+{
+  __asm volatile("cpsie i");
+}
+
+/*
+ * Disable IRQ interrupts
+ * Disables IRQ interrupts by clearing the I-bit in the CPSR.
+ * Can only be executed in Privileged modes.
+ */
+void __disable_irq(void)
+{
+  __asm volatile("cpsid i");
+}

@@ -1,0 +1,6 @@
+1681226598852	Delete resource 'stm32f407_bsp'
+1681238313009	Delete resource 'stm32f407xx_bsp/Inc/stm32f407xx_bsp_timer.h'
+1681238318116	Delete resource 'stm32f407xx_bsp/Src/stm32f407xx_bsp_timer.c'
+1681255652777	Delete resource 'stm32f407xx_bsp/Src/bsp_delay.c'
+1681256030074	Delete resource 'stm32f407xx_bsp/Inc/stm32f407xx_bsp.c'
+1681256348091	Delete resource 'stm32f407xx_bsp/Src/stm32f407xx_bsp.c'

@@ -1,0 +1,31 @@
+#include <stm32f407xx_bsp.h>
+
+uint32_t buttonState;
+
+int main(int argc, char *argv[])
+{
+
+	/* Initialize LEDs */
+	bsp_led_init();
+
+	while (1)
+	{
+		buttonState = bsp_button_read();
+
+		if (buttonState)
+		{
+			bsp_led_green_on();
+			bsp_led_orange_on();
+			bsp_led_red_on();
+			bsp_led_blue_on();
+		}
+		else
+		{
+			bsp_led_green_off();
+			bsp_led_orange_off();
+			bsp_led_red_off();
+			bsp_led_blue_off();
+
+		}
+	}
+}

@@ -1,0 +1,115 @@
+#include <stdint.h>
+#include "stm32f407xx_bsp.h"
+
+
+/* User LEDs: LD3(oragne)-PD13, LD4(green)-PD12, LD5(red)-PD14, LD6(blue)-PD15 */
+#define LED_GREEN			(1U << 12)
+#define LED_ORAGNE			(1U << 13)
+#define	LED_RED				(1U << 14)
+#define LED_BLUE			(1U << 15)
+
+#define LED_GREEN_MODE_OUTPUT		(1U << 24)
+#define LED_ORANGE_MODE_OUTPUT		(1U << 26)
+#define LED_RED_MODE_OUTPUT			(1U << 28)
+#define LED_BLUE_MODE_OUTPUT		(1U << 30)
+
+#define RCC_BASE			(*(uint32_t volatile *)0x40023800U)
+#define RCC_AHB1ENR			(RCC_BASE + (*(uint32_t volatile *)0x30U))
+#define GPIODEN				(1U << 3)	/* IO port D clock enable */
+
+#define GPIOD_BASE			(*((uint32_t volatile *)0x40020C00U))
+#define GPIOD_MODER			(GPIOD_BASE + 0x00U)
+#define GPIOD_ODR			(GPIOD_BASE + 0x14U)
+
+/*
+ * LED Driver
+ *
+ * 1. Identify the GPIO port LED is connected to
+ * 2. Identify the bus interface the GPIO peripheral is connected to
+ * 3. Enable clock for the GPIO peripheral
+ * 4. Identify the GPIO pin number of the LED
+ * 5. Configure corresponding pin to output mode
+ * 6.
+ */
+
+void bsp_led_init(void)
+{
+	__disable_irq();
+
+	/* Enable clock for GPIOD peripheral */
+	RCC_AHB1ENR |= GPIODEN;
+
+	/* Set LED pin mode to output mode */
+	/* Clear */
+	GPIOD_MODER &= ~(0xFFU << 24);
+	/* Set */
+	GPIOD_MODER |= (LED_GREEN_MODE_OUTPUT |
+					LED_ORANGE_MODE_OUTPUT |
+					LED_RED_MODE_OUTPUT |
+					LED_BLUE_MODE_OUTPUT);
+
+	__enable_irq();
+}
+
+void bsp_led_green_on(void)
+{
+	GPIOD_ODR |= LED_BLUE;
+}
+
+void bsp_led_green_off(void)
+{
+	GPIOD_ODR &= ~LED_BLUE;
+}
+
+void bsp_led_green_toggle(void)
+{
+	GPIOD_ODR ^= LED_BLUE;
+}
+
+
+void bsp_led_orange_on(void)
+{
+	GPIOD_ODR |= LED_BLUE;
+}
+
+void bsp_led_oragne_off(void)
+{
+	GPIOD_ODR &= ~LED_BLUE;
+}
+
+void bsp_led_oragne_toggle(void)
+{
+	GPIOD_ODR ^= LED_BLUE;
+}
+
+
+void bsp_led_red_on(void)
+{
+	GPIOD_ODR |= LED_BLUE;
+}
+
+void bsp_led_red_off(void)
+{
+	GPIOD_ODR &= ~LED_BLUE;
+}
+
+void bsp_led_red_toggle(void)
+{
+	GPIOD_ODR ^= LED_BLUE;
+}
+
+
+void bsp_led_blue_on(void)
+{
+	GPIOD_ODR |= LED_BLUE;
+}
+
+void bsp_led_blue_off(void)
+{
+	GPIOD_ODR &= ~LED_BLUE;
+}
+
+void bsp_led_blue_toggle(void)
+{
+	GPIOD_ODR ^= LED_BLUE;
+}

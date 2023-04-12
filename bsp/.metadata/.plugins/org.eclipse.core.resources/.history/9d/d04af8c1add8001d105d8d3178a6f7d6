@@ -1,0 +1,246 @@
+#include <stm32f407xx_bsp.h>
+
+
+/* User LEDs */
+#define LED_GREEN			(1U << 12)	/* PD12 */
+#define LED_ORANGE			(1U << 13)	/* PD13 */
+#define	LED_RED				(1U << 14)	/* PD14 */
+#define LED_BLUE			(1U << 15)	/* PD15 */
+
+#define LED_GREEN_MODE_OUTPUT		(1U << 24)
+#define LED_ORANGE_MODE_OUTPUT		(1U << 26)
+#define LED_RED_MODE_OUTPUT			(1U << 28)
+#define LED_BLUE_MODE_OUTPUT		(1U << 30)
+
+/* User button */
+#define BUTTON				(1U << 0)	/* PA0 */
+
+#define BUTTON_MODE_INPUT	(1U << 0)
+
+#define GPIOAEN				(1U << 0)	/* IO port A clock enable */
+#define GPIODEN				(1U << 3)	/* IO port D clock enable */
+#define TIM3EN				(1U << 1)	/* Timer 3 clock enable */
+
+#define RCC_BASE			0x40023800U
+#define GPIOD_BASE			0x40020000U
+#define GPIOD_BASE			0x40020C00U
+#define TIM3_BASE			0x40000400U
+
+#define RCC_AHB1ENR			(*(uint32_t volatile *)(RCC_BASE + 0x30U))
+#define RCC_APB1ENR			(*(uint32_t volatile *)(RCC_BASE + 0x40U))
+
+#define GPIOA_MODER			(*(uint32_t volatile *)(GPIOA_BASE + 0x00U))
+#define GPIOA_IDR			(*(uint32_t volatile *)(GPIOA_BASE + 0x10U))
+#define GPIOD_MODER			(*(uint32_t volatile *)(GPIOD_BASE + 0x00U))
+#define GPIOD_ODR			(*(uint32_t volatile *)(GPIOD_BASE + 0x14U))
+
+#define TIM3_CR1			(*(uint32_t volatile *)(TIM3_BASE + 0x00U))
+#define TIM3_SR				(*(uint32_t volatile *)(TIM3_BASE + 0x10U))
+#define TIM3_CNT			(*(uint32_t volatile *)(TIM3_BASE + 0x24U))
+#define TIM3_PSC			(*(uint32_t volatile *)(TIM3_BASE + 0x28U))
+#define TIM3_ARR			(*(uint32_t volatile *)(TIM3_BASE + 0x2CU))
+#define CEN					(1U << 0)
+
+void __disable_irq(void);
+void __enable_irq(void);
+
+/*****************************************************************************************
+ * LED driver
+ *
+ * 1. Identify the GPIO port LED is connected to
+ * 2. Identify the bus interface the GPIO peripheral is connected to
+ * 3. Enable clock for the GPIO peripheral
+ * 4. Identify the GPIO pin number of the LED
+ * 5. Configure corresponding pin to output mode
+ * 6. Set pin to turn on, clear to turn off the LED
+ ****************************************************************************************/
+
+void bsp_led_init(void)
+{
+	__disable_irq();
+
+	/* Enable clock for GPIOD peripheral */
+	RCC_AHB1ENR |= GPIODEN;
+
+	/* Set LED pin mode to output mode */
+	/* Clear */
+	GPIOD_MODER &= ~(0xFFU << 24);
+	/* Set */
+	GPIOD_MODER |= (LED_GREEN_MODE_OUTPUT |
+					LED_ORANGE_MODE_OUTPUT |
+					LED_RED_MODE_OUTPUT |
+					LED_BLUE_MODE_OUTPUT);
+
+	__enable_irq();
+}
+
+/*
+ * Green LED
+ */
+
+void bsp_led_green_on(void)
+{
+	GPIOD_ODR |= LED_GREEN;
+}
+
+void bsp_led_green_off(void)
+{
+	GPIOD_ODR &= ~LED_GREEN;
+}
+
+void bsp_led_green_toggle(void)
+{
+	GPIOD_ODR ^= LED_GREEN;
+}
+
+/*
+ * Orange LED
+ */
+
+void bsp_led_orange_on(void)
+{
+	GPIOD_ODR |= LED_ORANGE;
+}
+
+void bsp_led_orange_off(void)
+{
+	GPIOD_ODR &= ~LED_ORANGE;
+}
+
+void bsp_led_orange_toggle(void)
+{
+	GPIOD_ODR ^= LED_ORANGE;
+}
+
+/*
+ * Red LED
+ */
+
+void bsp_led_red_on(void)
+{
+	GPIOD_ODR |= LED_RED;
+}
+
+void bsp_led_red_off(void)
+{
+	GPIOD_ODR &= ~LED_RED;
+}
+
+void bsp_led_red_toggle(void)
+{
+	GPIOD_ODR ^= LED_RED;
+}
+
+/*
+ * Blue LED
+ */
+
+void bsp_led_blue_on(void)
+{
+	GPIOD_ODR |= LED_BLUE;
+}
+
+void bsp_led_blue_off(void)
+{
+	GPIOD_ODR &= ~LED_BLUE;
+}
+
+void bsp_led_blue_toggle(void)
+{
+	GPIOD_ODR ^= LED_BLUE;
+}
+
+
+/*****************************************************************************************
+ * Delay in milliseconds (Spinlock delay)
+ ****************************************************************************************/
+
+/*
+ * This delay function can be useful before kernel launch where there is no timer
+ * available yet.
+ */
+
+void bsp_delay_ms(uint32_t delay)
+{
+	/* Enable clock for TIM3 */
+	RCC_APB1ENR |= TIM3EN;
+
+	/*
+	 * The counter clock frequency CK_CNT is equal to f_(CK_PSC) / (PSC[15:0] + 1).
+	 * PSC contains the value to be loaded inthe active prescalar register at each
+	 * update event.
+	 */
+	TIM3_PSC = 160 - 1; 	/* 16 000 000 (default clk freq) / 160 = 100 0000 Hz
+							 * 즉, clock cycle 0 부터 159 까지 (160 clock cycle) 지날 때마다
+							 * CNT 값을 1씩 증가시키겠다. */
+	TIM3_ARR = 100 - 1;		/* 100 000 / 100 = 1000 Hz
+	 	 	 	 	 	 	 * CNT 값이 0부터 99까지 count up 된다음 다시 0으로 리셋 될 때마다
+	 	 	 	 	 	 	 * Update interrupt 발생시키고 UIF비트를 set 하겠다. 즉,
+	 	 	 	 	 	 	 * 100 000 Hz로 증가하는 CNT를 총 100 번 카운트 할 때마다 한 번 UIF
+	 	 	 	 	 	 	 * 비트를 set 하므로 최종적으로 UIF 비트는 1000 Hz로 set!
+	 	 	 	 	 	 	 * 달리 말하면, UIF 비트는 1 ms 마다 한 번 씩 set! */
+	TIM3_CNT = 0;			/* Counter value */
+	TIM3_CR1 |= CEN; 		/* Counter enable */
+
+	for (int i = 0; i < delay; i++)
+	{
+		/*
+		 * UIF: Update interrupt flag (bit[0])
+		 * 0: No update occurred
+		 * 1: Update interrupt pending. This bit is set by hardware when the registers
+		 * 	  are updated:
+		 */
+		while (!(TIM3_SR & 1)); 	/* wait for UIF set */
+		TIM3_SR &= ~1;
+	}
+}
+
+
+/*****************************************************************************************
+ * User button driver
+ ****************************************************************************************/
+
+void bsp_button_init(void)
+{
+	__disable_irq();
+
+	/* Enable clock for GPIOA peripheral */
+	RCC_AHB1ENR |= GPIOAEN;
+
+	/* Set button pin mode to input mode */
+	/* Clear */
+	GPIOA_MODER &= ~(0x03U << 0);	/* Optional since this region will be 0 by default */
+	/* Set */
+	GPIOA_MODER |= BUTTON_MODE_INPUT;
+
+	__enable_irq();
+}
+
+uint32_t bsp_button_read(void)
+{
+	return GPIOA_IDR & BUTTON;
+}
+
+/*****************************************************************************************
+ * Enable / disable IRQ interrupts
+ ****************************************************************************************/
+
+/*
+ * Enable IRQ interrupts
+ * Enables IRQ interrupts by clearing the I-bit in the CPSR.
+ * Can only be executed in Privileged modes.
+ */
+void __enable_irq(void)
+{
+  __asm volatile("cpsie i");
+}
+
+/*
+ * Disable IRQ interrupts
+ * Disables IRQ interrupts by clearing the I-bit in the CPSR.
+ * Can only be executed in Privileged modes.
+ */
+void __disable_irq(void)
+{
+  __asm volatile("cpsid i");
+}

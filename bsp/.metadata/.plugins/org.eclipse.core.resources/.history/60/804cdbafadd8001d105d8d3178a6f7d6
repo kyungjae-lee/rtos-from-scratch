@@ -1,0 +1,26 @@
+#ifndef STM32F407xx_BSP_LED_H
+#define STM32F407xx_BSP_LED_H
+
+#include <stdint.h>
+
+void bsp_led_init(void);
+
+void bsp_led_green_on(void);
+void bsp_led_green_off(void);
+void bsp_led_green_toggle(void);
+
+void bsp_led_orange_on(void);
+void bsp_led_orange_off(void);
+void bsp_led_orange_toggle(void);
+
+void bsp_led_red_on(void);
+void bsp_led_red_off(void);
+void bsp_led_red_toggle(void);
+
+void bsp_led_blue_on(void);
+void bsp_led_blue_off(void);
+void bsp_led_blue_toggle(void);
+
+void bsp_delay_ms(uint32_t delay);
+
+#endif

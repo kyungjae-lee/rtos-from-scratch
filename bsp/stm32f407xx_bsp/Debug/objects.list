@@ -1,0 +1,8 @@
+"./Src/bsp_button.o"
+"./Src/bsp_delay.o"
+"./Src/bsp_led.o"
+"./Src/bsp_usart.o"
+"./Src/main.o"
+"./Src/syscalls.o"
+"./Src/sysmem.o"
+"./Startup/startup_stm32f407vgtx.o"

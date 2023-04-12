@@ -1,0 +1,100 @@
+#injkljclude <stm32f407xx_bsp.h>
+
+
+
+
+
+
+
+/*****************************************************************************************
+ * Delay in milliseconds (Spinlock delay)
+ ****************************************************************************************/
+
+/*
+ * This delay function can be useful before kernel launch where there is no timer
+ * available yet.
+ */
+
+void bsp_delay_ms(uint32_t delay)
+{
+	/* Enable clock for TIM3 */
+	RCC_APB1ENR |= TIM3EN;
+
+	/*
+	 * The counter clock frequency CK_CNT is equal to f_(CK_PSC) / (PSC[15:0] + 1).
+	 * PSC contains the value to be loaded inthe active prescalar register at each
+	 * update event.
+	 */
+	TIM3_PSC = 160 - 1; 	/* 16 000 000 (default clk freq) / 160 = 100 0000 Hz
+							 * 즉, clock cycle 0 부터 159 까지 (160 clock cycle) 지날 때마다
+							 * CNT 값을 1씩 증가시키겠다. */
+	TIM3_ARR = 100 - 1;		/* 100 000 / 100 = 1000 Hz
+	 	 	 	 	 	 	 * CNT 값이 0부터 99까지 count up 된다음 다시 0으로 리셋 될 때마다
+	 	 	 	 	 	 	 * Update interrupt 발생시키고 UIF비트를 set 하겠다. 즉,
+	 	 	 	 	 	 	 * 100 000 Hz로 증가하는 CNT를 총 100 번 카운트 할 때마다 한 번 UIF
+	 	 	 	 	 	 	 * 비트를 set 하므로 최종적으로 UIF 비트는 1000 Hz로 set!
+	 	 	 	 	 	 	 * 달리 말하면, UIF 비트는 1 ms 마다 한 번 씩 set! */
+	TIM3_CNT = 0;			/* Counter value */
+	TIM3_CR1 |= CEN; 		/* Counter enable */
+
+	for (int i = 0; i < delay; i++)
+	{
+		/*
+		 * UIF: Update interrupt flag (bit[0])
+		 * 0: No update occurred
+		 * 1: Update interrupt pending. This bit is set by hardware when the registers
+		 * 	  are updated:
+		 */
+		while (!(TIM3_SR & 1)); 	/* wait for UIF set */
+		TIM3_SR &= ~1;
+	}
+}
+
+
+/*****************************************************************************************
+ * User button driver
+ ****************************************************************************************/
+
+void bsp_button_init(void)
+{
+	__disable_irq();
+
+	/* Enable clock for GPIOA peripheral */
+	RCC_AHB1ENR |= GPIOAEN;
+
+	/* Set button pin mode to input mode */
+	/* Clear */
+	GPIOA_MODER &= ~(0x03U << 0);	/* Optional since this region will be 0 by default */
+
+	__enable_irq();
+}
+
+uint32_t bsp_button_read(void)
+{
+	return GPIOA_IDR & BUTTON;
+}
+
+
+/*****************************************************************************************
+ * Enable / disable IRQ interrupts
+ ****************************************************************************************/
+
+/*
+ * Enable IRQ interrupts
+ * Enables IRQ interrupts by clearing the I-bit in the CPSR.
+ * Can only be executed in Privileged modes.
+ */
+void __enable_irq(void)
+{
+  __asm volatile("cpsie i");
+}
+
+/*
+ * Disable IRQ interrupts
+ * Disables IRQ interrupts by clearing the I-bit in the CPSR.
+ * Can only be executed in Privileged modes.
+ */
+void __disable_irq(void)
+{
+  __asm volatile("cpsid i");
+}

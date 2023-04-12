@@ -1,0 +1,17 @@
+#include "stm32f407xx_bsp.h"
+
+int main(int argc, char *argv[])
+{
+
+	/* Initialize LEDs */
+	bsp_led_init();
+
+	while (1)
+	{
+		bsp_led_green_toggle();
+		bsp_led_oragne_toggle();
+		bsp_led_red_toggle();
+		bsp_led_blue_toggle();
+		for (int i = 0; i < 100000; i++);
+	}
+}

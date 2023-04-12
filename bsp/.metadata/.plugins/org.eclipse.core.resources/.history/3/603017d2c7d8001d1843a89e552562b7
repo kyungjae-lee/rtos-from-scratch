@@ -1,0 +1,24 @@
+#include "bsp_button.h"
+
+/*****************************************************************************************
+ * User button driver
+ ****************************************************************************************/
+
+void bsp_button_init(void)
+{
+	__disable_irq();
+
+	/* Enable clock for GPIOA peripheral */
+	RCC_AHB1ENR |= GPIOAEN;
+
+	/* Set button pin mode to input mode */
+	/* Clear */
+	GPIOA_MODER &= ~(0x03U << 0);	/* Optional since this region will be 0 by default */
+
+	__enable_irq();
+}
+
+uint32_t bsp_button_read(void)
+{
+	return GPIOA_IDR & BUTTON;
+}

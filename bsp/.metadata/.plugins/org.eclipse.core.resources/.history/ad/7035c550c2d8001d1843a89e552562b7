@@ -1,0 +1,38 @@
+#include <stdio.h>
+#include "stm32f407xx_bsp.h"
+#include "bsp_usart.h"
+
+uint32_t buttonState;
+
+int main(int argc, char *argv[])
+{
+
+	/* Initialize LEDs */
+	usart_tx_init();
+	bsp_led_init();
+	bsp_button_init();
+
+	printf("\n\rBoard support package test!\n\r");
+	printf("Press user button (blue) to turn on all four LEDs.\n\r");
+
+	while (1)
+	{
+		buttonState = bsp_button_read();
+
+		if (buttonState)
+		{
+			bsp_led_green_on();
+			bsp_led_orange_on();
+			bsp_led_red_on();
+			bsp_led_blue_on();
+		}
+		else
+		{
+			bsp_led_green_off();
+			bsp_led_orange_off();
+			bsp_led_red_off();
+			bsp_led_blue_off();
+
+		}
+	}
+}
