@@ -206,3 +206,6 @@ Developing a real-time operating system (RTOS) from scratch.
 
 * To extend a basic Round-Robin scheduling algorithm to cooperative algorithm, allow tasks to yield execution if they completed their job earlier in the assigned time qunta.
 * Naked function contains pure assembly code. The compiler does not generate prologue (disabling interrupts and pushing r4-r11 onto stask) and epilogue (enabling interrupts and popping r4-r11) for naked functions.
+* Clock gating mechanism:
+
+  * In many modern MCUs, clock access to the peripherals are OFF by default. To use a peripheral, you need to enable the clock for that peripheral. (This is a design decision to save power consumption of MCUs.)
