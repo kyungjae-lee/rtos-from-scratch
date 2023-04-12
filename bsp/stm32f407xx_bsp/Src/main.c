@@ -1,8 +1,15 @@
+/*****************************************************************************************
+ * @ File name		: stm32f407xx_button.c
+ * @ Description	: Test program for stm32f407xx board support package (BSP)
+ * @ Author			: Kyungjae Lee
+ * @ Date created	: 04/11/2023
+ ****************************************************************************************/
+
 #include <stdio.h>
-#include "bsp_button.h"
-#include "bsp_led.h"
-#include "bsp_delay.h"
-#include "bsp_usart.h"
+#include "stm32f407xx_button.h"
+#include "stm32f407xx_delay.h"
+#include "stm32f407xx_led.h"
+#include "stm32f407xx_usart.h"
 
 uint32_t buttonState;
 
@@ -10,13 +17,13 @@ int main(int argc, char *argv[])
 {
 
 	/* Initialize USART */
-	bsp_usart_tx_init();
+	usart_tx_init();
 
 	/* Initialize LEDs */
-	bsp_led_init();
+	led_init();
 
 	/* Initialize button */
-	bsp_button_init();
+	button_init();
 
 	/* Test USART */
 	printf("\n\rBoard support package test!\n\r");
@@ -25,21 +32,21 @@ int main(int argc, char *argv[])
 	/* Test button and LEDs */
 	while (1)
 	{
-		buttonState = bsp_button_read();
+		buttonState = button_read();
 
 		if (buttonState)
 		{
-			bsp_led_green_on();
-			bsp_led_orange_on();
-			bsp_led_red_on();
-			bsp_led_blue_on();
+			led_green_on();
+			led_orange_on();
+			led_red_on();
+			led_blue_on();
 		}
 		else
 		{
-			bsp_led_green_off();
-			bsp_led_orange_off();
-			bsp_led_red_off();
-			bsp_led_blue_off();
+			led_green_off();
+			led_orange_off();
+			led_red_off();
+			led_blue_off();
 		}
 	}
 }

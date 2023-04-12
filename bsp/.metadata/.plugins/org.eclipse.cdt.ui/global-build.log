@@ -1,6 +1,6 @@
-19:29:30 **** Clean-only build of configuration Debug for project stm32f407xx_bsp ****
+08:22:08 **** Clean-only build of configuration Debug for project stm32f407xx_bsp ****
 make -j8 clean 
 rm -rf ./Startup/startup_stm32f407vgtx.d ./Startup/startup_stm32f407vgtx.o
-rm -rf ./Src/bsp_button.d ./Src/bsp_button.o ./Src/bsp_button.su ./Src/bsp_delay.d ./Src/bsp_delay.o ./Src/bsp_delay.su ./Src/bsp_led.d ./Src/bsp_led.o ./Src/bsp_led.su ./Src/bsp_usart.d ./Src/bsp_usart.o ./Src/bsp_usart.su ./Src/main.d ./Src/main.o ./Src/main.su ./Src/syscalls.d ./Src/syscalls.o ./Src/syscalls.su ./Src/sysmem.d ./Src/sysmem.o ./Src/sysmem.su
+rm -rf ./Src/main.d ./Src/main.o ./Src/main.su ./Src/stm32f407xx_button.d ./Src/stm32f407xx_button.o ./Src/stm32f407xx_button.su ./Src/stm32f407xx_delay.d ./Src/stm32f407xx_delay.o ./Src/stm32f407xx_delay.su ./Src/stm32f407xx_led.d ./Src/stm32f407xx_led.o ./Src/stm32f407xx_led.su ./Src/stm32f407xx_usart.d ./Src/stm32f407xx_usart.o ./Src/stm32f407xx_usart.su ./Src/syscalls.d ./Src/syscalls.o ./Src/syscalls.su ./Src/sysmem.d ./Src/sysmem.o ./Src/sysmem.su
 rm -rf default.size.stdout stm32f407xx_bsp.elf stm32f407xx_bsp.list stm32f407xx_bsp.map
  

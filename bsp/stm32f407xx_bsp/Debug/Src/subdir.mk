@@ -5,29 +5,29 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
-../Src/bsp_button.c \
-../Src/bsp_delay.c \
-../Src/bsp_led.c \
-../Src/bsp_usart.c \
 ../Src/main.c \
+../Src/stm32f407xx_button.c \
+../Src/stm32f407xx_delay.c \
+../Src/stm32f407xx_led.c \
+../Src/stm32f407xx_usart.c \
 ../Src/syscalls.c \
 ../Src/sysmem.c 
 
 OBJS += \
-./Src/bsp_button.o \
-./Src/bsp_delay.o \
-./Src/bsp_led.o \
-./Src/bsp_usart.o \
 ./Src/main.o \
+./Src/stm32f407xx_button.o \
+./Src/stm32f407xx_delay.o \
+./Src/stm32f407xx_led.o \
+./Src/stm32f407xx_usart.o \
 ./Src/syscalls.o \
 ./Src/sysmem.o 
 
 C_DEPS += \
-./Src/bsp_button.d \
-./Src/bsp_delay.d \
-./Src/bsp_led.d \
-./Src/bsp_usart.d \
 ./Src/main.d \
+./Src/stm32f407xx_button.d \
+./Src/stm32f407xx_delay.d \
+./Src/stm32f407xx_led.d \
+./Src/stm32f407xx_usart.d \
 ./Src/syscalls.d \
 ./Src/sysmem.d 
 
@@ -39,7 +39,7 @@ Src/%.o Src/%.su: ../Src/%.c Src/subdir.mk
 clean: clean-Src
 
 clean-Src:
-	-$(RM) ./Src/bsp_button.d ./Src/bsp_button.o ./Src/bsp_button.su ./Src/bsp_delay.d ./Src/bsp_delay.o ./Src/bsp_delay.su ./Src/bsp_led.d ./Src/bsp_led.o ./Src/bsp_led.su ./Src/bsp_usart.d ./Src/bsp_usart.o ./Src/bsp_usart.su ./Src/main.d ./Src/main.o ./Src/main.su ./Src/syscalls.d ./Src/syscalls.o ./Src/syscalls.su ./Src/sysmem.d ./Src/sysmem.o ./Src/sysmem.su
+	-$(RM) ./Src/main.d ./Src/main.o ./Src/main.su ./Src/stm32f407xx_button.d ./Src/stm32f407xx_button.o ./Src/stm32f407xx_button.su ./Src/stm32f407xx_delay.d ./Src/stm32f407xx_delay.o ./Src/stm32f407xx_delay.su ./Src/stm32f407xx_led.d ./Src/stm32f407xx_led.o ./Src/stm32f407xx_led.su ./Src/stm32f407xx_usart.d ./Src/stm32f407xx_usart.o ./Src/stm32f407xx_usart.su ./Src/syscalls.d ./Src/syscalls.o ./Src/syscalls.su ./Src/sysmem.d ./Src/sysmem.o ./Src/sysmem.su
 
 .PHONY: clean-Src
 

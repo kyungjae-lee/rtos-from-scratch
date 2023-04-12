@@ -1,0 +1,63 @@
+//#include <stdint.h>
+#include <stm32f407xx_usart.h>
+
+static uint16_t compute_usart_bd(uint32_t periph_clk, uint32_t baudrate);
+static void usart_set_baudrate(uint32_t periph_clk, uint32_t baudrate);
+static void usart_write(int ch);
+
+/* Allows to use 'printf()'. */
+int __io_putchar(int ch)
+{
+	usart_write(ch);
+	return ch;
+}
+
+void bsp_usart_tx_init(void)
+{
+	/* Enable clock access to GPIOA. */
+	RCC_AHB1ENR |= GPIOAEN;
+
+	/* Set PA2 mode to alternate function mode. */
+	GPIOA_MODER &= ~(1U << 4);
+	GPIOA_MODER |= (1U << 5);
+
+	/* Set alternate function type to AF7 (USART2_TX) */
+	GPIOA_AFRL |= (1U << 8);
+	GPIOA_AFRL |= (1U << 9);
+	GPIOA_AFRL |= (1U << 10);
+	GPIOA_AFRL &= ~(1U << 11);
+
+
+	/* Enable clock access to USART2. */
+	RCC_APB1ENR |= USART2EN;
+
+	/* Configure baudrate (the rate at which communication will take place). */
+	usart_set_baudrate(APB1_CLK, USART_BAUDRATE);
+
+	/* Configure transfer direction. */
+	USART2_CR1 |= TE;	// Enable transmitter
+
+	/* Enable USART module. */
+	USART2_CR1 |= UE;	// Enable USART
+}
+
+static void usart_write(int ch)
+{
+	/* Make sure the transmit data register is empty. */
+	while (!(USART2_SR & TXE)) {}
+
+	/* Write to transmit data register */
+	USART2_DR = (ch & 0xFF);
+}
+
+/* Sets the USART baudrate */
+static void usart_set_baudrate(uint32_t periph_clk, uint32_t baudrate)
+{
+	USART2_BRR = compute_usart_bd(periph_clk, baudrate);
+}
+
+/* Computes the USART baudrate */
+static uint16_t compute_usart_bd(uint32_t periph_clk, uint32_t baudrate)
+{
+	return (periph_clk + (baudrate / 2U)) / baudrate;
+}
