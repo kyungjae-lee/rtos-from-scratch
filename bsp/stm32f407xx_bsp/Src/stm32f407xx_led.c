@@ -1,6 +1,6 @@
 /*****************************************************************************************
  * @ File name		: stm32f407xx_led.c
- * @ Description	: LED driver to be used for testing RTOS functionality
+ * @ Description	: LED driver
  * @ Author			: Kyungjae Lee
  * @ Date created	: 04/11/2023
  ****************************************************************************************/
@@ -18,10 +18,9 @@
  * 6. Set pin bit to turn on, clear to turn off the LED
  ****************************************************************************************/
 
+/* Initializes LEDs */
 void led_init(void)
 {
-	//__disable_irq();
-
 	/* Enable clock for GPIOD peripheral */
 	RCC_AHB1ENR |= GPIODEN;
 
@@ -33,8 +32,6 @@ void led_init(void)
 					LED_ORANGE_MODE_OUTPUT |
 					LED_RED_MODE_OUTPUT |
 					LED_BLUE_MODE_OUTPUT);
-
-	//__enable_irq();
 }
 
 /*

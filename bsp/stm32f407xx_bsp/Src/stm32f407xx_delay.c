@@ -1,17 +1,13 @@
 /*****************************************************************************************
  * @ File name		: stm32f407xx_delay.c
- * @ Description	: Delay (spinlock) function to be used for testing RTOS functionality
+ * @ Description	: Delay (spinlock) function
  * @ Author			: Kyungjae Lee
  * @ Date created	: 04/11/2023
  ****************************************************************************************/
 
 #include "stm32f407xx_delay.h"
 
-/*
- * This delay function can be useful before kernel launch where there is no timer
- * available yet.
- */
-
+/* Imposes delay in milliseconds */
 void delay_ms(uint32_t delay)
 {
 	/* Enable clock for TIM3 */

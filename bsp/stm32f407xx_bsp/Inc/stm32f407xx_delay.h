@@ -10,6 +10,7 @@
 
 #include "stm32f407xx.h"
 
+/* Imposes delay in milliseconds */
 void delay_ms(uint32_t delay);
 
 #endif

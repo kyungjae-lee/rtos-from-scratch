@@ -1,6 +1,6 @@
 /*****************************************************************************************
  * @ File name		: stm32f407xx.h
- * @ Description	: Header file for stm32f407xx board support package.
+ * @ Description	: Header file for stm32f407xx peripheral driver development
  * @ Author			: Kyungjae Lee
  * @ Date created	: 04/11/2023
  ****************************************************************************************/
@@ -69,33 +69,5 @@
 #define SYS_FREQ		16000000	// MCU data sheet "Clocks and Startup"
 #define APB1_CLK		SYS_FREQ
 
-
-/*****************************************************************************************
- * Enable / disable IRQ interrupts
- ****************************************************************************************/
-
-/*
- * Enable IRQ interrupts (CMSIS)
- * Enables IRQ interrupts by clearing the I-bit in the CPSR.
- * Can only be executed in Privileged modes.
- */
-/*
-void __enable_irq(void)
-{
-  __asm volatile("cpsie i");
-}
-*/
-
-/*
- * Disable IRQ interrupts (CMSIS)
- * Disables IRQ interrupts by clearing the I-bit in the CPSR.
- * Can only be executed in Privileged modes.
- */
-/*
-void __disable_irq(void)
-{
-  __asm volatile("cpsid i");
-}
-*/
 
 #endif

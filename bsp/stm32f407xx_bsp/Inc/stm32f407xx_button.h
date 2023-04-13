@@ -8,9 +8,12 @@
 #ifndef BSP_BUTTON_H
 #define BSP_BUTTON_H
 
-#include <stm32f407xx.h>
+#include "stm32f407xx.h"
 
+/* Initializes user button */
 void button_init(void);
+
+/* Reads button input data */
 uint32_t button_read(void);
 
 #endif

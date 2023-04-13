@@ -10,6 +10,7 @@
 
 #include "stm32f407xx.h"
 
+/* Initializes USART */
 void usart_tx_init(void);
 
 #endif

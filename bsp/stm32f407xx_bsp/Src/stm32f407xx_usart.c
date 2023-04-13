@@ -1,6 +1,6 @@
 /*****************************************************************************************
  * @ File name		: stm32f407xx_usart.c
- * @ Description	: USART driver to be used for testing RTOS functionality
+ * @ Description	: USART driver
  * @ Author			: Kyungjae Lee
  * @ Date created	: 04/11/2023
  ****************************************************************************************/
@@ -18,6 +18,7 @@ int __io_putchar(int ch)
 	return ch;
 }
 
+/* Initializes USART */
 void usart_tx_init(void)
 {
 	/* Enable clock access to GPIOA. */
@@ -41,12 +42,13 @@ void usart_tx_init(void)
 	usart_set_baudrate(APB1_CLK, USART_BAUDRATE);
 
 	/* Configure transfer direction. */
-	USART2_CR1 |= TE;	// Enable transmitter
+	USART2_CR1 |= TE;	/* Enable transmitter */
 
 	/* Enable USART module. */
-	USART2_CR1 |= UE;	// Enable USART
+	USART2_CR1 |= UE;	/* Enable USART */
 }
 
+/* Writes data */
 static void usart_write(int ch)
 {
 	/* Make sure the transmit data register is empty. */
