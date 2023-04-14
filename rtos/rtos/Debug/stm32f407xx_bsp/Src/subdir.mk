@@ -25,7 +25,7 @@ C_DEPS += \
 
 # Each subdirectory must supply rules for building sources it contributes
 stm32f407xx_bsp/Src/%.o stm32f407xx_bsp/Src/%.su: ../stm32f407xx_bsp/Src/%.c stm32f407xx_bsp/Src/subdir.mk
-	arm-none-eabi-gcc "$<" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F407G_DISC1 -DSTM32F4 -DSTM32F407VGTx -c -I../Inc -I"/home/klee/repos/rtos-from-scratch/rtos/rtos/stm32f407xx_bsp/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
+	arm-none-eabi-gcc "$<" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F407G_DISC1 -DSTM32F4 -DSTM32F407VGTx -DSTM32F407xx -c -I../Inc -I"/home/klee/repos/rtos-from-scratch/rtos/rtos/stm32f407xx_bsp/Inc" -I"/home/klee/repos/rtos-from-scratch/rtos/rtos/chip-headers/CMSIS/Device/ST/STM32F4xx/Include" -I"/home/klee/repos/rtos-from-scratch/rtos/rtos/chip-headers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
 
 clean: clean-stm32f407xx_bsp-2f-Src
 

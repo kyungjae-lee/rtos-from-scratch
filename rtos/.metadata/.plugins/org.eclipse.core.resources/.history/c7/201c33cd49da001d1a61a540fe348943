@@ -1,0 +1,12 @@
+#ifndef KERNEL_H
+#define KERNEL_H
+
+#include <stdint.h>
+#include "stm32f4xx.h"
+
+void kernel_init(void);
+void start_kernel(void);
+uint8_t create_tasks(void (*task0)(void), void (*task1)(void), void (*task2)(void));
+void task_yield(void);
+
+#endif

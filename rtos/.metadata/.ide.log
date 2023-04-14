@@ -343,3 +343,106 @@
 2023-04-12 09:16:43,117 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
 2023-04-12 09:16:43,118 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] SLF4J: Defaulting to no-operation (NOP) logger implementation
 2023-04-12 09:16:43,118 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+2023-04-12 21:38:24,995 [INFO] Activator:177 - 
+
+
+2023-04-12 21:38:24,996 [INFO] Activator:178 - !SESSION log4j initialized
+2023-04-12 21:38:55,206 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+2023-04-12 21:38:55,207 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] SLF4J: Defaulting to no-operation (NOP) logger implementation
+2023-04-12 21:38:55,207 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+2023-04-12 23:54:33,213 [INFO] Activator:177 - 
+
+
+2023-04-12 23:54:33,214 [INFO] Activator:178 - !SESSION log4j initialized
+2023-04-12 23:55:02,742 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+2023-04-12 23:55:02,743 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] SLF4J: Defaulting to no-operation (NOP) logger implementation
+2023-04-12 23:55:02,743 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+2023-04-13 13:55:14,099 [INFO] Activator:177 - 
+
+
+2023-04-13 13:55:14,100 [INFO] Activator:178 - !SESSION log4j initialized
+2023-04-13 13:55:46,767 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+2023-04-13 13:55:46,768 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] SLF4J: Defaulting to no-operation (NOP) logger implementation
+2023-04-13 13:55:46,769 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+2023-04-13 16:52:54,821 [INFO] Activator:177 - 
+
+
+2023-04-13 16:52:54,823 [INFO] Activator:178 - !SESSION log4j initialized
+2023-04-13 16:53:24,166 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+2023-04-13 16:53:24,167 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] SLF4J: Defaulting to no-operation (NOP) logger implementation
+2023-04-13 16:53:24,167 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+2023-04-13 17:12:30,734 [INFO] Activator:177 - 
+
+
+2023-04-13 17:12:30,735 [INFO] Activator:178 - !SESSION log4j initialized
+2023-04-13 17:13:01,045 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+2023-04-13 17:13:01,045 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] SLF4J: Defaulting to no-operation (NOP) logger implementation
+2023-04-13 17:13:01,046 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+2023-04-14 10:45:44,150 [INFO] Activator:177 - 
+
+
+2023-04-14 10:45:44,151 [INFO] Activator:178 - !SESSION log4j initialized
+2023-04-14 10:46:19,073 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] [log;-0500 2023.04.14 10:46:19:72;ERROR;org.eclipse.ecf.identity;org.eclipse.core.runtime.Status[plugin=org.eclipse.ecf.identity;code=4;message=Namespace cannot be null;severity4;exception=org.eclipse.ecf.core.identity.IDCreateException: Namespace cannot be null;children=[]]]
+2023-04-14 10:46:19,076 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] org.eclipse.ecf.core.identity.IDCreateException: Namespace cannot be null
+2023-04-14 10:46:19,077 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 	at org.eclipse.ecf.core.identity.IDFactory.logAndThrow(IDFactory.java:174)
+2023-04-14 10:46:19,077 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 	at org.eclipse.ecf.core.identity.IDFactory.createID(IDFactory.java:190)
+2023-04-14 10:46:19,077 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 	at org.eclipse.ecf.filetransfer.identity.FileIDFactory.createFileID(FileIDFactory.java:120)
+2023-04-14 10:46:19,078 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 	at org.eclipse.ecf.filetransfer.identity.FileIDFactory.createFileID(FileIDFactory.java:78)
+2023-04-14 10:46:19,078 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 	at org.eclipse.equinox.internal.p2.transport.ecf.FileReader.sendRetrieveRequest(FileReader.java:455)
+2023-04-14 10:46:19,079 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 	at org.eclipse.equinox.internal.p2.transport.ecf.FileReader.readInto(FileReader.java:387)
+2023-04-14 10:46:19,081 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 	at org.eclipse.equinox.internal.p2.transport.ecf.RepositoryTransport.download(RepositoryTransport.java:107)
+2023-04-14 10:46:19,081 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 	at org.eclipse.equinox.internal.p2.transport.ecf.RepositoryTransport.download(RepositoryTransport.java:166)
+2023-04-14 10:46:19,082 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.handleRemoteIndexFile(AbstractRepositoryManager.java:738)
+2023-04-14 10:46:19,082 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadIndexFile(AbstractRepositoryManager.java:732)
+2023-04-14 10:46:19,083 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:674)
+2023-04-14 10:46:19,084 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:110)
+2023-04-14 10:46:19,085 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:105)
+2023-04-14 10:46:19,085 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker.getAvailableRepositories(UpdateChecker.java:152)
+2023-04-14 10:46:19,086 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker.checkForUpdates(UpdateChecker.java:130)
+2023-04-14 10:46:19,087 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker$UpdateCheckThread.run(UpdateChecker.java:78)
+2023-04-14 10:46:19,119 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] [log;-0500 2023.04.14 10:46:19:119;ERROR;org.eclipse.ecf.identity;org.eclipse.core.runtime.Status[plugin=org.eclipse.ecf.identity;code=4;message=Namespace cannot be null;severity4;exception=org.eclipse.ecf.core.identity.IDCreateException: Namespace cannot be null;children=[]]]
+2023-04-14 10:46:19,120 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] org.eclipse.ecf.core.identity.IDCreateException: Namespace cannot be null
+2023-04-14 10:46:19,120 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 	at org.eclipse.ecf.core.identity.IDFactory.logAndThrow(IDFactory.java:174)
+2023-04-14 10:46:19,121 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 	at org.eclipse.ecf.core.identity.IDFactory.createID(IDFactory.java:190)
+2023-04-14 10:46:19,121 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 	at org.eclipse.ecf.filetransfer.identity.FileIDFactory.createFileID(FileIDFactory.java:120)
+2023-04-14 10:46:19,122 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 	at org.eclipse.ecf.filetransfer.identity.FileIDFactory.createFileID(FileIDFactory.java:78)
+2023-04-14 10:46:19,122 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 	at org.eclipse.equinox.internal.p2.transport.ecf.FileInfoReader.sendBrowseRequest(FileInfoReader.java:183)
+2023-04-14 10:46:19,123 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 	at org.eclipse.equinox.internal.p2.transport.ecf.FileInfoReader.getRemoteFiles(FileInfoReader.java:109)
+2023-04-14 10:46:19,124 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 	at org.eclipse.equinox.internal.p2.transport.ecf.FileInfoReader.getRemoteFile(FileInfoReader.java:125)
+2023-04-14 10:46:19,124 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 	at org.eclipse.equinox.internal.p2.transport.ecf.FileInfoReader.getLastModified(FileInfoReader.java:130)
+2023-04-14 10:46:19,125 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 	at org.eclipse.equinox.internal.p2.transport.ecf.RepositoryTransport.getLastModified(RepositoryTransport.java:249)
+2023-04-14 10:46:19,125 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 	at org.eclipse.equinox.internal.p2.repository.CacheManager.getLastModified(CacheManager.java:283)
+2023-04-14 10:46:19,126 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 	at org.eclipse.equinox.internal.p2.repository.CacheManager.createCache(CacheManager.java:194)
+2023-04-14 10:46:19,126 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepositoryFactory.getLocalFile(CompositeMetadataRepositoryFactory.java:77)
+2023-04-14 10:46:19,126 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepositoryFactory.load(CompositeMetadataRepositoryFactory.java:100)
+2023-04-14 10:46:19,127 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.factoryLoad(MetadataRepositoryManager.java:63)
+2023-04-14 10:46:19,127 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:787)
+2023-04-14 10:46:19,127 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:685)
+2023-04-14 10:46:19,128 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:110)
+2023-04-14 10:46:19,128 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:105)
+2023-04-14 10:46:19,129 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker.getAvailableRepositories(UpdateChecker.java:152)
+2023-04-14 10:46:19,129 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker.checkForUpdates(UpdateChecker.java:130)
+2023-04-14 10:46:19,129 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker$UpdateCheckThread.run(UpdateChecker.java:78)
+2023-04-14 10:46:19,130 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] [log;-0500 2023.04.14 10:46:19:130;ERROR;org.eclipse.ecf.identity;org.eclipse.core.runtime.Status[plugin=org.eclipse.ecf.identity;code=4;message=Namespace cannot be null;severity4;exception=org.eclipse.ecf.core.identity.IDCreateException: Namespace cannot be null;children=[]]]
+2023-04-14 10:46:19,131 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] org.eclipse.ecf.core.identity.IDCreateException: Namespace cannot be null
+2023-04-14 10:46:19,132 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 	at org.eclipse.ecf.core.identity.IDFactory.logAndThrow(IDFactory.java:174)
+2023-04-14 10:46:19,132 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 	at org.eclipse.ecf.core.identity.IDFactory.createID(IDFactory.java:190)
+2023-04-14 10:46:19,132 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 	at org.eclipse.ecf.filetransfer.identity.FileIDFactory.createFileID(FileIDFactory.java:120)
+2023-04-14 10:46:19,133 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 	at org.eclipse.ecf.filetransfer.identity.FileIDFactory.createFileID(FileIDFactory.java:78)
+2023-04-14 10:46:19,133 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 	at org.eclipse.equinox.internal.p2.transport.ecf.FileInfoReader.sendBrowseRequest(FileInfoReader.java:183)
+2023-04-14 10:46:19,133 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 	at org.eclipse.equinox.internal.p2.transport.ecf.FileInfoReader.getRemoteFiles(FileInfoReader.java:109)
+2023-04-14 10:46:19,134 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 	at org.eclipse.equinox.internal.p2.transport.ecf.FileInfoReader.getRemoteFile(FileInfoReader.java:125)
+2023-04-14 10:46:19,134 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 	at org.eclipse.equinox.internal.p2.transport.ecf.FileInfoReader.getLastModified(FileInfoReader.java:130)
+2023-04-14 10:46:19,134 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 	at org.eclipse.equinox.internal.p2.transport.ecf.RepositoryTransport.getLastModified(RepositoryTransport.java:249)
+2023-04-14 10:46:19,135 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 	at org.eclipse.equinox.internal.p2.repository.CacheManager.getLastModified(CacheManager.java:283)
+2023-04-14 10:46:19,135 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 	at org.eclipse.equinox.internal.p2.repository.CacheManager.createCache(CacheManager.java:231)
+2023-04-14 10:46:19,136 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepositoryFactory.getLocalFile(CompositeMetadataRepositoryFactory.java:77)
+2023-04-14 10:46:19,136 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepositoryFactory.load(CompositeMetadataRepositoryFactory.java:100)
+2023-04-14 10:46:19,137 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.factoryLoad(MetadataRepositoryManager.java:63)
+2023-04-14 10:46:19,137 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:787)
+2023-04-14 10:46:19,138 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:685)
+2023-04-14 10:46:19,141 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:110)
+2023-04-14 10:46:19,142 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:105)
+2023-04-14 10:46:19,142 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker.getAvailableRepositories(UpdateChecker.java:152)
+2023-04-14 10:46:19,143 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker.checkForUpdates(UpdateChecker.java:130)
+2023-04-14 10:46:19,143 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker$UpdateCheckThread.run(UpdateChecker.java:78)

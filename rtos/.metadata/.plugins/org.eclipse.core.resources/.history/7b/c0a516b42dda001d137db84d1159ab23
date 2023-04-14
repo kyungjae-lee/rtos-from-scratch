@@ -1,0 +1,48 @@
+#include <stdio.h>
+#include "stm32f407xx_led.h"
+#include "stm32f407xx_usart.h"
+#include "kernel.h"
+
+void task0_handler(void);
+void task1_handler(void);
+void task2_handler(void);
+
+int main(void)
+{
+	/* Initialize USART */
+	usart_tx_init();
+
+	/* Initialize kernel */
+	kernel_init();
+
+	/* Create tasks */
+	create_tasks(task0_handler, task1_handler, task2_handler);
+
+	/* Start kernel */
+	start_kernel();
+
+}
+
+void task0_handler(void)
+{
+	while (1)
+	{
+		printf("task0\n\r");
+	}
+}
+
+void task1_handler(void)
+{
+	while (1)
+	{
+		printf("task1\n\r");
+	}
+}
+
+void task2_handler(void)
+{
+	while (1)
+	{
+		printf("task2\n\r");
+	}
+}

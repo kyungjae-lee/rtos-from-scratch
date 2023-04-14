@@ -8,8 +8,8 @@
 #ifndef STM32F407xx_LED_H
 #define STM32F407xx_LED_H
 
+#include <stm32f407xx_bsp.h>
 #include "stdint.h"
-#include "stm32f407xx.h"
 
 void led_init(void);
 

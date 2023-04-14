@@ -8,7 +8,7 @@
 #ifndef BSP_BUTTON_H
 #define BSP_BUTTON_H
 
-#include <stm32f407xx.h>
+#include <stm32f407xx_bsp.h>
 
 void button_init(void);
 uint32_t button_read(void);
